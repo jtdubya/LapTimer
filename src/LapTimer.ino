@@ -43,7 +43,6 @@ constexpr long MAX_THRESHOLD_DISTANCE = 45; // lower to prevent false detects fr
 constexpr int64_t LAP_LOCKOUT_DURATION_NS = 2000000000;
 constexpr int64_t LAP_COUNT_DISPLAY_DELAY_MS = 1000;
 
-
 int lapCount = 1;
 bool raceHasStarted = false;
 bool isFirstCarDetection = false;
