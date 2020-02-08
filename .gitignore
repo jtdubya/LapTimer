@@ -12,6 +12,7 @@
 *.sln.docstates
 *.vcxproj
 *.vcxproj.*
+.gitattributes
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
