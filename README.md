@@ -3,7 +3,7 @@
 This is a simple slot car lap timer that uses ultrasonic sensors and a numeric display and runs on Arduino. The lap timer displays the last lap time and lap count. 
 I know you can just buy digital slot cars but they cost more than twice as much and hey, its fun to make stuff!
 
-<div style='text-align: center'>
+<div align="center">
   <img style='width: 500px' src="src/media/lap_timer_demo.gif"></img>
 </div>
 
@@ -17,8 +17,14 @@ I know you can just buy digital slot cars but they cost more than twice as much 
 
 
 ## How it works
-The distance sensor is used to check for the passing slot car. Lap times and counts are displayed at the end of each lap. 
+It's really simple: the distance sensor is used to check for the passing slot car. Lap times and counts are displayed at the end of each lap. 
 
-<div style='text-align: center'>
+<div align="center">
   <img style='width: 500px' src="src/media/lap_timer_with_car.jpg"></img>
+</div>
+
+## Wiring Diagram
+
+<div align="center">
+  <img style='width: 500px' src="src/media/wiring_diagram.png"></img>
 </div>
