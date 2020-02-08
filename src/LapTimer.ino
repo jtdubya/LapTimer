@@ -12,7 +12,7 @@
 #include <sstream>
 
 // Seven segment bit mask
-//  _ 
+//  _
 // |_|
 // |_|
 //
@@ -24,7 +24,7 @@
 //B00100000 Top Left
 //B01000000 middle bar
 
-// bit mask letters 
+// bit mask letters
 constexpr uint8_t LETTER_L = B00111000;
 constexpr uint8_t LETTER_A = B01110111;
 constexpr uint8_t LETTER_P = B01110011;
@@ -47,7 +47,6 @@ int lapCount = 1;
 bool raceHasStarted = false;
 bool isFirstCarDetection = false;
 std::chrono::high_resolution_clock::time_point lapStart, lapEnd;
-
 Adafruit_7segment display = Adafruit_7segment();
 
 void setup(void)
@@ -76,7 +75,7 @@ bool IsDistanceWithinThreshold(long distance)
 void DisplayMinutesAndSeconds(int64_t minutes, int64_t secondsWithMinutes)
 {
 	int64_t seconds = secondsWithMinutes % 60; // modulo out the minutes
-	// Display minutes on left two locations
+	// Display minutes on left two digits
 	if (minutes < 10)
 	{
 		display.writeDigitNum(0, 0);
@@ -88,7 +87,7 @@ void DisplayMinutesAndSeconds(int64_t minutes, int64_t secondsWithMinutes)
 		display.writeDigitNum(1, (minutes % 10));
 	}
 
-	// Display seconds on right two locations
+	// Display seconds on right two digits
 	if (seconds < 10)
 	{
 		display.writeDigitNum(3, 0);
@@ -106,7 +105,7 @@ void DisplayMinutesAndSeconds(int64_t minutes, int64_t secondsWithMinutes)
 
 void DisplaySecondsAndMilliseconds(int64_t seconds, int64_t millis)
 {
-	// Display seconds on left two locations
+	// Display seconds on left two digits
 	if (seconds < 10)
 	{
 		display.writeDigitNum(0, 0);
@@ -118,11 +117,11 @@ void DisplaySecondsAndMilliseconds(int64_t seconds, int64_t millis)
 		display.writeDigitNum(1, seconds % 10, true);
 	}
 
-	// Display milliseconds on right two locations
+	// Display milliseconds on right two digits
 	int twoDigits = (millis % 1000) / 10;
 	int thirdDigit = millis % 10;
 
-	if (thirdDigit >= 5) // round two digits
+	if (thirdDigit >= 5) // round to two digits
 	{
 		twoDigits += 1;
 	}
@@ -140,7 +139,7 @@ void DisplayTime(std::chrono::nanoseconds time)
 	int64_t lapTimeSeconds = std::chrono::duration_cast<std::chrono::seconds>(time).count();
 	int64_t lapTimeMillis = std::chrono::duration_cast<std::chrono::milliseconds>(time).count() % 1000; // modulo out the seconds
 
-		// Display seconds 
+		// Display seconds
 	if (lapTimeSeconds < 60)
 	{
 		DisplaySecondsAndMilliseconds(lapTimeSeconds, lapTimeMillis);
@@ -223,7 +222,7 @@ void loop()
 	lapEnd = std::chrono::high_resolution_clock::now();
 	std::chrono::nanoseconds lapTime = lapEnd - lapStart;
 	distance = GetDistanceCentimeters(duration);
-	
+
 	if (IsDistanceWithinThreshold(distance))
 	{
 		if (lapTime.count() > LAP_LOCKOUT_DURATION_NS)
