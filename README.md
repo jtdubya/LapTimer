@@ -4,7 +4,7 @@ This is a simple slot car lap timer that uses ultrasonic sensors and a numeric d
 I know you can just buy digital slot cars but they cost more than twice as much and hey, its fun to make stuff!
 
 <div align="center">
-  <img style='width: 500px' src="src/media/lap_timer_demo.gif"></img>
+  <img style='width: 500px' src="media/lap_timer_demo.gif"></img>
 </div>
 
 ## Components:
@@ -20,11 +20,11 @@ I know you can just buy digital slot cars but they cost more than twice as much 
 It's really simple: the distance sensor is used to check for the passing slot car. Lap times and counts are displayed at the end of each lap. 
 
 <div align="center">
-  <img style='width: 500px' src="src/media/lap_timer_with_car.jpg"></img>
+  <img style='width: 500px' src="media/lap_timer_with_car.jpg"></img>
 </div>
 
 ## Wiring Diagram
 
 <div align="center">
-  <img style='width: 500px' src="src/media/wiring_diagram.png"></img>
+  <img style='width: 500px' src="media/wiring_diagram.png"></img>
 </div>
