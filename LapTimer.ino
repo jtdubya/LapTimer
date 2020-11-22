@@ -286,8 +286,8 @@ void loop()
                     lapStart = std::chrono::high_resolution_clock::now();
                     lapCount += 1;
 
-                    PostLapTimeToServer(lapTime);
                     DisplayLapTime(lapTime);
+                    PostLapTimeToServer(lapTime);
                     DisplayLapCount(lapCount);
                 }
             }
