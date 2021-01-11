@@ -188,10 +188,10 @@ void DisplayLapCount(int lapCount)
 
     display.drawColon(false);
     display.writeDisplay();
-    delay(LAP_COUNT_DISPLAY_DELAY_MS);
+    delay(ONE_SECOND_MS);
 }
 
-void DisplayLapTime(std::chrono::nanoseconds lapTime)
+void FlashLapTime(std::chrono::nanoseconds lapTime)
 {
     for (int flashCount = 0; flashCount < 3; flashCount++) {
         DisplayTime(lapTime);
@@ -271,7 +271,7 @@ void loop()
 
         if (IsDistanceWithinThreshold(distance))
         {
-            if (lapTime.count() > LAP_LOCKOUT_DURATION_NS)
+            if (lapTime.count() > TWO_SECONDS_NS)
             {
                 if (!raceHasStarted)
                 {
@@ -286,9 +286,17 @@ void loop()
                     lapStart = std::chrono::high_resolution_clock::now();
                     lapCount += 1;
 
-                    DisplayLapTime(lapTime);
+                    DisplayTime(lapTime);
+
+                    // Posting the lap time to server can take up to about 6.5 seconds if the http client times out connected to the server
                     PostLapTimeToServer(lapTime);
-                    DisplayLapCount(lapCount);
+
+                    // Only display lap count if there wasn't a delay from the post the lap time to the server
+                    std::chrono::nanoseconds elapsedTime = std::chrono::high_resolution_clock::now() - lapStart;
+                    if (elapsedTime.count() + ONE_SECOND_NS < FIVE_SECONDS_NS)
+                    {
+                        DisplayLapCount(lapCount);
+                    }
                 }
             }
         }
@@ -306,7 +314,7 @@ void loop()
     {
         Serial.println("NOT connected");
         BlinkLED(QUICK_BLINK_DURATION, 2);
-        delay(LAP_COUNT_DISPLAY_DELAY_MS);
+        delay(ONE_SECOND_MS);
     }
-    delay(LOOP_DELAY_MS);
+    delay(TENTH_OF_A_SECOND_MS);
 }

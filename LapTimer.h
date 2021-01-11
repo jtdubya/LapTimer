@@ -37,12 +37,13 @@ constexpr uint8_t ECHO_ADDRESS = 14;
 constexpr uint8_t DISPLAY_ADDRESS = 0x70;
 constexpr int MIN_DISTANCE = 1;
 constexpr int MAX_DISTANCE = 55;
-constexpr int LOOP_DELAY_MS = 10;
+constexpr int TENTH_OF_A_SECOND_MS = 10;
 constexpr int THIRD_OF_A_SECOND_MS = 333;
 constexpr int QUARTER_OF_A_SECOND_MS = 250;
-constexpr long MAX_THRESHOLD_DISTANCE = 57; // lower to prevent false detects from resetting the first car detection
-constexpr int64_t LAP_LOCKOUT_DURATION_NS = 2000000000;
-constexpr int64_t LAP_COUNT_DISPLAY_DELAY_MS = 1000;
+constexpr int ONE_SECOND_MS = 1000;
+constexpr int64_t ONE_SECOND_NS = 1000000000;
+constexpr int64_t TWO_SECONDS_NS = 2000000000;
+constexpr int64_t FIVE_SECONDS_NS = 5000000000;
 
 constexpr NetworkConfiguration _netConfig = NetworkConfiguration();
 constexpr int QUICK_BLINK_DURATION = 150;
